@@ -20,12 +20,15 @@ def date_consistency
   if extraction_start > extraction_end
     errors.add(:extraction_start, "cannot be later than extraction end")
   end
+
   if received_date > extraction_start
     errors.add(:received_date, "cannot be later than the extraction start")
   end
+  
   if requested_date > received_date
     errors.add(:requested_date, "cannot be later than the received date")
   end
+  
   if extraction_end > release_date
     errors.add(:extraction_end, "cannot be later than the release date")
   end
