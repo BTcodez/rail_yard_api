@@ -2,10 +2,10 @@ class Order < ApplicationRecord
 #Validations:
   validates :car_id, presence: true, length: { maximum: 50 }
   validates :requested_date, presence: true
-  validates :received_date, presence: true
-  validates :extraction_start, presence: true
-  validates :extraction_end, presence: true
-  validates :release_date, presence: true
+  validates :received_date
+  validates :extraction_start
+  validates :extraction_end
+  validates :release_date
   validate :date_consistency
   
 #Associations:
