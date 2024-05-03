@@ -10,7 +10,7 @@ class User < ApplicationRecord
         uniqueness: true, 
         format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address" }    
 
-    validates :password_digest,
+    validates :password_digest, # CHANGE password_digest
         presence: true, 
         length: { minimum: 40 } #Adjust length as needed.
 
