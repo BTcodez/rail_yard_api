@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   post '/login', to: 'sessions#create'
+  resources :raw_materials
 end
