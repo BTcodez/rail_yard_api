@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
     validates :password_digest, # CHANGE password_digest
         presence: true, 
-        length: { minimum: 40 } #Adjust length as needed.
+        length: { minimum: 10 } #Adjust length as needed.
 
         validates :user_type, 
             presence: true 
