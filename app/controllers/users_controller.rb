@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authenticate_request, except: [:create]
 
   def index
     users = User.all
@@ -26,29 +25,24 @@ class UsersController < ApplicationController
     else 
       render json: user.errors, status: :unprocessable_entity
     end
+  end
 
-    def destroy
-      if set_user.destroy
-        render json: { message: 'Successfully deleted user.' }
-      else
-        render json: { error: 'Unable to delete user.' }, status: :unprocessable_entity
-      end
+  def destroy
+    if set_user.destroy
+      render json: { message: 'Successfully deleted user.' }
+    else
+      render json: { error: 'Unable to delete user.' }, status: :unprocessable_entity
     end
+  end
 
   end
 
   private
 
   def set_user
-    user = user.find(params[:id])
+    user = User.find(params[:id])
   end
 
   def user_params
-    params.permit(:name, :email, :password, :password_confirmation)
+    params.permit(:name, :email, :password_digest, :user_type)
   end
-
-  rescue_from ActiveRecord::RecordNotFound do |exeption|
-    Rails.logger.error exception.message
-    render json: { error: 'User not found.'}, status: :not_found
-  end
-end
