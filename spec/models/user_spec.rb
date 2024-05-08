@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
     let (:user) { build(:user) }
 
-    context 'presence validation tests' do
+    context 'with valid presence attributes' do
         it 'is valid' do
             expect(user).to be_valid
         end
