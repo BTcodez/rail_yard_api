@@ -8,6 +8,5 @@ FactoryBot.define do
         release_date { "2024-05-06" }
         user_id { "1" }
         raw_material_id { "12" }
-        weight { 180000 }
     end
 end

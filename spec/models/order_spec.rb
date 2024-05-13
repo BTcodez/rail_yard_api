@@ -7,7 +7,7 @@ RSpec.describe Order, type: :model do
 
     context 'with valid presence attributes' do
         it 'is valid' do
-            expect(order).to be_valid
+            expect(:order).to be_valid
         end
 
         it 'is not valid without a car_id' do
