@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_232047) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_10_004151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
     t.string "car_id", null: false
-    t.datetime "requested_date", null: false
-    t.datetime "received_date", null: false
-    t.datetime "extraction_start", null: false
-    t.datetime "extraction_end", null: false
-    t.datetime "release_date", null: false
+    t.datetime "requested_date"
+    t.datetime "received_date"
+    t.datetime "extraction_start"
+    t.datetime "extraction_end"
+    t.datetime "release_date"
     t.bigint "user_id", null: false
     t.bigint "raw_material_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "weight"
     t.index ["car_id"], name: "index_orders_on_car_id"
     t.index ["raw_material_id"], name: "index_orders_on_raw_material_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -32,7 +33,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_232047) do
 
   create_table "raw_materials", force: :cascade do |t|
     t.string "material_name"
-    t.decimal "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
