@@ -9,6 +9,6 @@ class OrderBlueprint < Blueprinter::Base
 
     view :extended do
         include_view :normal
-        fields :raw_material_id, :requested_date, :received_date, :extraction_start, :extraction_end, :release_date, :user_id
+        fields :raw_material_id, :requested_date, :received_date, :extraction_start, :extraction_end, :release_date
     end
 end

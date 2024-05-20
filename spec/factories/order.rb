@@ -6,7 +6,6 @@ FactoryBot.define do
         extraction_start { "2024-05-01" }
         extraction_end { "2024-05-02" }
         release_date { "2024-05-06" }
-        user_id { "1" }
         raw_material_id { "12" }
     end
 end

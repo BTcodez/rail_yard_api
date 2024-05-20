@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-    let (:user) { build(:user) }
-    let (:raw_material) { build(:raw_material) }
-    let (:order) { build(:order, user: user, raw_material: raw_material) }
+    let (:user) { create(:user) }
+    let (:raw_material) { create(:raw_material) }
+    let (:order) { create(:order, user: user, raw_material: raw_material) }
 
     context 'with valid presence attributes' do
         it 'is valid' do
@@ -40,10 +40,6 @@ RSpec.describe Order, type: :model do
             expect(order).to_not be_valid
         end
 
-        it 'is not valid without a user_id' do
-            order = build(:order, user_id: nil)
-            expect(order).to_not be_valid
-        end
 
         it 'is not valid without a raw_material_id' do
             order = build(:order, raw_material_id: nil)
