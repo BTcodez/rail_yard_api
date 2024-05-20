@@ -15,9 +15,8 @@ class User < ApplicationRecord
         presence: true, 
         length: { minimum: 10 } #Adjust length as needed.
 
-        validates :user_type, 
-            presence: true 
-            #Set up a selected list of valid user roles.
+    validates :user_type, 
+        presence: true 
 
     has_many :orders
 end

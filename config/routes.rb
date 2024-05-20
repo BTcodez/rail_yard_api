@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
- resources :users
-  get "up" => "rails/health#show", as: :rails_health_check
+ resources :users, only: [:index, :create, :show, :update]
+ resources :orders, only: [:index, :create, :show, :update]
+ resources :raw_materials, only: [:index, :create, :show, :update]
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-
-  post '/login', to: 'sessions#create'
-  resources :raw_materials
-  resources :orders
+ get "up" => "rails/health#show", as: :rails_health_check
+ post '/login', to: 'sessions#create'
 end
