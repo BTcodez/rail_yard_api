@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-    let (:user) { create(:user) }
-    let (:raw_material) { create(:raw_material) }
+    let (:user) { build(:user) }
+    let (:raw_material) { build(:raw_material) }
     let (:order) { build(:order, user: user, raw_material: raw_material) }
 
     context 'with valid presence attributes' do
