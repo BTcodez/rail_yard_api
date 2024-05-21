@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
+  before_action :authenticate_request, except: [:index, :show]
 
   def index
     order = Order.all
@@ -7,7 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(order_params)
+    order = @current_user.orders.new(order_params)
     if order.save
       render json: order, status: :created
     else 
@@ -28,6 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    
     if set_order.destroy
       render json: { message: 'Successfully deleted user.' }
     else
@@ -42,6 +44,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:car_id, :requested_date, :received_date, :extraction_start, :extraction_end, :release_date, :user_id, :raw_material_id, :weight)
+    params.require(:order).permit(:car_id, :requested_date, :received_date, :extraction_start, :extraction_end, :user_id, :raw_material_id, :release_date, :weight)
   end
 end
