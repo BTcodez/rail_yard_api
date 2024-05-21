@@ -4,7 +4,7 @@ class Order < ApplicationRecord
     belongs_to :raw_material
   
   #Validations:
-    validates :user, presence: true
+    #validates :user, presence: true
     validates :raw_material, presence: true
     validates :car_id, presence: true, length: { maximum: 50 }
     validates :requested_date, presence: true
