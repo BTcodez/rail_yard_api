@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
-  # before_action :authenticate_request, except: [:index, :show]
+  before_action :authenticate_request, except: [:index, :show]
 
   def index
     order = Order.all
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   def update
     order = set_order
     if order.update(order_params)
-      render json: OrderBlueprint.render(set_order, view: :extended), status: :ok
+      render json: OrderBlueprint.render(order, view: :extended), status: :ok
     else
       render json: order.errors, status: :unprocessable_entity
     end
