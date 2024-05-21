@@ -8,7 +8,7 @@ class Order < ApplicationRecord
     validates :raw_material, presence: true
     validates :car_id, presence: true, length: { maximum: 50 }
     validates :requested_date, presence: true
-    validate :date_consistency
+    # validate :date_consistency
 end
 
 private
