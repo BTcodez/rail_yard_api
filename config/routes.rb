@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
  resources :users
-  get "up" => "rails/health#show", as: :rails_health_check
+ resources :orders
+ resources :raw_materials
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-
-  post '/login', to: 'sessions#create'
+ get "up" => "rails/health#show", as: :rails_health_check
+ post '/login', to: 'sessions#create'
 end

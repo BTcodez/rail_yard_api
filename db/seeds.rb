@@ -1,9 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+User.create(name:"tails", email:"tails@hotmail.com", password:"tails", password_confirmation:"tails",  user_type:"admin")
+material1 = RawMaterial.create!(material_name: "Corn Syrup")
+material2 = RawMaterial.create!(material_name: "Sucralose")
+material3 = RawMaterial.create!(material_name: "AMS")
+
+# Seed Orders
+
+
+
+orders = [
+  { car_id: "VTGX017400", requested_date: "2023-02-06", received_date: "2024-01-05", extraction_start: "2024-01-08", extraction_end: "2024-01-10", release_date: "2024-01-10", raw_material_id: material1.id },
+  { car_id: "UTLX064972", requested_date: "2023-05-06", received_date: "2024-01-05", extraction_start: "2024-01-08", extraction_end: "2024-01-10", release_date: "2024-01-10", raw_material_id: material2.id },
+  { car_id: "UTLX601220", requested_date: "2023-04-15", received_date: "2023-04-18", extraction_start: "2024-01-08", extraction_end: "2024-01-10", release_date: "2024-01-10", raw_material_id: material3.id },
+  { car_id: "SHPX205057", requested_date: "2023-01-02", received_date: "2024-01-05", extraction_start: "2024-01-08", extraction_end: "2024-01-10", release_date: "2024-01-10", raw_material_id: material3.id },
+  { car_id: "UTLX066842", requested_date: "2023-01-02", received_date: "2024-01-06", extraction_start: "2024-01-07", extraction_end: "2024-01-10", release_date: "2024-01-10", raw_material_id: material1.id }
+]
+
+user = User.first
+user.orders.create!(orders)

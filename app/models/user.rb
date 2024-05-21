@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
 #Validations:
     validates :name, 
         presence: true, 
@@ -10,13 +11,12 @@ class User < ApplicationRecord
         uniqueness: true, 
         format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address" }    
 
-    validates :password_digest, # CHANGE password_digest
+    validates :password_digest,
         presence: true, 
         length: { minimum: 10 } #Adjust length as needed.
 
-        validates :user_type, 
-            presence: true 
-            #Set up a selected list of valid user roles.
+    validates :user_type, 
+        presence: true 
 
     has_many :orders
 end
