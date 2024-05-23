@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = set_user
     if set_user.update(user_params)
       render json: UserBlueprint.render(set_user, view: :extended), status: :ok
     else 
