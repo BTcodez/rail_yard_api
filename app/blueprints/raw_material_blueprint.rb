@@ -6,4 +6,8 @@ class RawMaterialBlueprint < Blueprinter::Base
     view :normal do
         fields :material_name
     end
+
+    view :extended do
+        include_view :normal
+    end
 end

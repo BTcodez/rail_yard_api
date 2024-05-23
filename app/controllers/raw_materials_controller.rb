@@ -24,12 +24,12 @@ class RawMaterialsController < ApplicationController
     end
 
     def update
-        if set_raw_material.update(raw_material_params)
-            render json: RawMaterialBlueprint.render(set_raw_material, view: :extended), status: :ok
+        if @raw_material.update(raw_material_params)
+          render json: RawMaterialBlueprint.render(@raw_material, view: :extended), status: :ok
         else
-            render json: raw_material.errors, status: :unprocessable_entity
+          render json: @raw_material.errors, status: :unprocessable_entity
         end
-    end
+      end
 
     def destroy
         if set_raw_material.destroy
@@ -41,9 +41,14 @@ class RawMaterialsController < ApplicationController
 
     private
 
+    #method for finding raw material by id
+    def find_raw_material
+        @raw_material = RawMaterial.find(params[:id])
+    end
+
     #method for setting current raw material
     def set_raw_material
-        raw_material = RawMaterial.find(params[:id])
+        @raw_material = RawMaterial.find(params[:id])
     end
 
     #method permits only the material_name parameter
